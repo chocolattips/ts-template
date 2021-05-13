@@ -1,21 +1,24 @@
 module.exports = {
+  mode: "production",
   entry: "./src/index.ts",
-  target: "node",
   output: {
     filename: "index.js",
     path: `${__dirname}/dist`,
-    libraryTarget: "commonjs2",
+    library: "Lib",
+    libraryTarget: "umd",
+    globalObject: "this",
   },
   module: {
     rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
         exclude: /node_modules/,
+        loader: "ts-loader",
       },
     ],
   },
   resolve: {
     extensions: [".ts", ".js", ".json"],
   },
-};
+  // devtool: false,
+}
